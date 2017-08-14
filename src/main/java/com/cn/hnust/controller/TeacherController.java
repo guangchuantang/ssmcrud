@@ -27,7 +27,6 @@ public class TeacherController {
 	private TeacherService tService;
     
 	//查询所有教师信息
-	//查询所有用户
 	@RequestMapping(value = "/selectTeacher",method = RequestMethod.GET)
 	@ResponseBody
 	public JSONObject selectUser(HttpServletRequest request,HttpServletResponse response){
