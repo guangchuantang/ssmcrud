@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.hnust.dao.TeacherDao" >
+  <resultMap id="BaseResultMap" type="com.cn.hnust.pojo.Teacher" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="course" property="course" jdbcType="VARCHAR" />
+    <result column="goodness" property="goodness" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="elegants_show" property="elegantsShow" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, picture, name, sex, school, course, goodness, phone, price, elegants_show,comment
+  </sql>
+  
+  <!-- 查询所有  -->
+  <select id="selectTeacher" resultMap="BaseResultMap">
+    select * from Teacher
+  </select>
+  
+  <!-- 根据id删除  -->
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from Teacher
+    where id = #{id}
+  </delete>
+  
+  <!-- 添加数据 -->
+  <insert id="insert" parameterType="com.cn.hnust.pojo.Teacher" >
+    insert into Teacher (id, picture, name, sex, school, course, goodness, phone, price, elegants_show,comment)
+    values (#{id}, #{picture}, #{name}, #{sex},#{school},#{course},#{goodness},#{phone},#{price},#{elegantsShow},#{comment})
+  </insert>
+
+  <update id="updateById" parameterType="com.cn.hnust.pojo.Teacher" >
+    update Teacher
+       set picture = #{picture},
+       name = #{name},
+       sex = #{sex},
+       school = #{school},
+       course = #{course},
+       goodness = #{goodness},
+       phone = #{phone},
+       price = #{price},
+       elegants_show = #{elegantsShow},
+       comment = #{comment}
+    where id = #{id}
+  </update>
+</mapper>
+
